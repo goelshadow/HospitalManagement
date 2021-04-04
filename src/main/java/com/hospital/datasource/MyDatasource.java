@@ -11,7 +11,6 @@
  * 
  * @Bean
  * 
- * @ConfigurationProperties("spring.datasource.hikari") public DataSource
+ * @ConfigurationProperties("spring.datasource") public DataSource
  * getDataSource() { return DataSourceBuilder.create().build(); } }
- * 
  */

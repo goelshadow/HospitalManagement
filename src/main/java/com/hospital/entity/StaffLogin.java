@@ -6,7 +6,7 @@
  * 
  * @Entity
  * 
- * @Table(name = "TEST.STAFF_LOGIN") public class StaffLogin {
+ * @Table(name = "STAFF_LOGIN") public class StaffLogin {
  * 
  * @Id
  * 
@@ -16,11 +16,18 @@
  * 
  * @Column(name = "PASSWORD") private String pazzwrd;
  * 
- * public String getHospitalId() { return hospitalId; } public void
- * setHospitalId(String hospitalId) { this.hospitalId = hospitalId; } public
- * String getStaffId() { return staffId; } public void setStaffId(String
- * staffId) { this.staffId = staffId; } public String getPazzwrd() { return
- * pazzwrd; } public void setPazzwrd(String pazzwrd) { this.pazzwrd = pazzwrd; }
+ * public String getHospitalId() { return hospitalId; }
+ * 
+ * public void setHospitalId(String hospitalId) { this.hospitalId = hospitalId;
+ * }
+ * 
+ * public String getStaffId() { return staffId; }
+ * 
+ * public void setStaffId(String staffId) { this.staffId = staffId; }
+ * 
+ * public String getPazzwrd() { return pazzwrd; }
+ * 
+ * public void setPazzwrd(String pazzwrd) { this.pazzwrd = pazzwrd; }
  * 
  * }
  */

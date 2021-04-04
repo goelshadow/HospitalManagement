@@ -7,6 +7,7 @@ public class RegisterOrUpdateStaffRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Header header;
+	private String staffId;
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -23,6 +24,12 @@ public class RegisterOrUpdateStaffRequest implements Serializable {
 	}
 	public void setHeader(Header header) {
 		this.header = header;
+	}
+	public String getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	public String getFirstName() {
 		return firstName;

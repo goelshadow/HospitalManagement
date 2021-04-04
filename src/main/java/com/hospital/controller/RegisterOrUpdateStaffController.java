@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hospital.constant.StaffConstants;
 import com.hospital.model.RegisterOrUpdateStaffRequest;
 import com.hospital.model.RegisterorUpdateStaffResponse;
-//import com.hospital.service.RegisterOrUpdateStaffService;
+import com.hospital.service.RegisterOrUpdateStaffService;
 import com.hospital.util.LoggerUtil;
 import com.hospital.util.StaffUtil;
 
 @RestController
 public class RegisterOrUpdateStaffController {
 	
-//	@Autowired
-//	RegisterOrUpdateStaffService registerOrUpdateStaffService;
+	@Autowired
+	RegisterOrUpdateStaffService registerOrUpdateStaffService;
 
 	@PostMapping(path = "/registerStaff")
 	public RegisterorUpdateStaffResponse registerStaff(@RequestBody RegisterOrUpdateStaffRequest request) {
@@ -25,7 +25,7 @@ public class RegisterOrUpdateStaffController {
 		RegisterorUpdateStaffResponse response = null;
 		try {
 			LoggerUtil.printInfoLogs("Request received:", request, false);
-//			response = registerOrUpdateStaffService.registerStaff(request);
+			response = registerOrUpdateStaffService.registerStaff(request);
 		} catch(Exception e) {
 			LoggerUtil.printErrorLogs("Exception Occured:", e);
 			response = StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.EXCEPTION_CODE, StaffConstants.EXCEPTION_DESC, "");
