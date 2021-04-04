@@ -24,4 +24,4 @@ spring.datasource.test-on-borrow: true
 logging.level.org.springframework.web: DEBUG
 logging.level.org.hibernate: DEBUG
 logging.level.com.zaxxer.hikari.HikariConfig: DEBUG
-logging.level.org.hibernate.SQL: debug
+logging.level.org.hibernate.SQL: DEBUG
