@@ -1,11 +1,11 @@
 package com.hospital.model;
 
-public class RegisterOrUpdateStaffResponse {
+public class RegisterOrUpdatePatientResponse {
 
 	private String responseCode;
 	private String responseDesc;
 	private Header header;
-	private String staffUserName;
+	private String patientUserName;
 	
 	public String getResponseCode() {
 		return responseCode;
@@ -25,16 +25,16 @@ public class RegisterOrUpdateStaffResponse {
 	public void setHeader(Header header) {
 		this.header = header;
 	}
-	public String getStaffUserName() {
-		return staffUserName;
+	public String getPatientUserName() {
+		return patientUserName;
 	}
-	public void setStaffUserName(String staffUserName) {
-		this.staffUserName = staffUserName;
+	public void setPatientUserName(String patientUserName) {
+		this.patientUserName = patientUserName;
 	}
 	@Override
 	public String toString() {
-		return "RegisterOrUpdateStaffResponse [responseCode=" + responseCode + ", responseDesc=" + responseDesc
-				+ ", header=" + header + ", staffUserName=" + staffUserName + "]";
+		return "RegisterOrUpdatePatientResponse [responseCode=" + responseCode + ", responseDesc=" + responseDesc
+				+ ", header=" + header + ", patientUserName=" + patientUserName + "]";
 	}
 	
 }

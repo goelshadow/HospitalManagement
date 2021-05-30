@@ -3,7 +3,7 @@ package com.hospital.constant;
 public class StaffConstants {
 
 	public static final String REGISTER_STAFF_SERVICE_NAME = "RegisterStaffService";
-	public static final String UPDATE_STAFF_SERVICE_NAME = "RegisterStaffService";
+	public static final String UPDATE_STAFF_SERVICE_NAME = "UpdateStaffService";
 	public static final String SUCCESS_CODE = "0";
 	public static final String SUCCESS_DESC = "Success";
 	public static final String FAILURE_CODE = "10001";
