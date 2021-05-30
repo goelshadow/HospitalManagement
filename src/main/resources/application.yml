@@ -1,7 +1,7 @@
 spring:
  datasource:
 #  hikari:
-   url: jdbc:sqlserver://hospitalmgmtdb.database.windows.net:1433;database=hospitalmanagement;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+   url: jdbc:sqlserver://hospitaldatabase-server.database.windows.net:1433;database=hospitalmanagement;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
    username: myadmin
    password: Shubham@1234
    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
