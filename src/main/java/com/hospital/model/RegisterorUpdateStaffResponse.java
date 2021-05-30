@@ -1,6 +1,6 @@
 package com.hospital.model;
 
-public class RegisterorUpdateStaffResponse {
+public class RegisterOrUpdateStaffResponse {
 	
 	private String responseCode;
 	private String responseDesc;
