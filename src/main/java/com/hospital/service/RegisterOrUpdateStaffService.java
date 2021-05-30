@@ -9,7 +9,7 @@ import com.hospital.constant.StaffConstants;
 import com.hospital.entity.Staff;
 import com.hospital.helper.StaffHelper;
 import com.hospital.model.RegisterOrUpdateStaffRequest;
-import com.hospital.model.RegisterorUpdateStaffResponse;
+import com.hospital.model.RegisterOrUpdateStaffResponse;
 import com.hospital.repository.StaffRepository;
 import com.hospital.util.CommonUtil;
 import com.hospital.util.LoggerUtil;
@@ -27,7 +27,7 @@ public class RegisterOrUpdateStaffService {
 	@Autowired
 	StaffHelper staffHelper;
 
-	public RegisterorUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
+	public RegisterOrUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
 
 		String generatedUserName = generateStaffId(request);
 		LoggerUtil.printInfoLogs("UserName generated:", generatedUserName, false);
@@ -35,7 +35,7 @@ public class RegisterOrUpdateStaffService {
 			return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.FAILURE_CODE,StaffConstants.FAILURE_DESC, "");
 		}
 		Staff staff = staffHelper.createEntryInStaffTableRequest(request, generatedUserName);
-		LoggerUtil.printInfoLogs("Request for saving staff table:", staff, false);
+		LoggerUtil.printInfoLogs("Request for saving in staff table:", staff, false);
 		staffRepository.save(staff);
 		return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,StaffConstants.SUCCESS_DESC, generatedUserName);
 	}
@@ -66,7 +66,7 @@ public class RegisterOrUpdateStaffService {
 		return finalStaffId.toLowerCase();
 	}
 
-	public RegisterorUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
+	public RegisterOrUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
 
 		Optional<Staff> staff1 = staffRepository.findById(request.getStaffUserName());
 		if (staff1.isPresent()) {

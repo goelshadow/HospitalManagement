@@ -19,8 +19,8 @@ spring.datasource.test-on-borrow: true
 #   auto-commit: true #default auto-commit behavior.
 #spring.jpa.database-platform: org.hibernate.dialect.Oracle12cDialect
 #spring.jpa.hibernate.naming.implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-#server:
-#  port: 8081
+server:
+  port: 8081
 logging.level.org.springframework.web: DEBUG
 logging.level.org.hibernate: DEBUG
 logging.level.com.zaxxer.hikari.HikariConfig: DEBUG
