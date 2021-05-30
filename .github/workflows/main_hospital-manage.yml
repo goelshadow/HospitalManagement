@@ -49,5 +49,5 @@ jobs:
       with:
         app-name: 'hospital-manage'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c124784533c64eb194c9d4770fcf2d42 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_35d4b839ddb14f948c83196ca4dd26a1 }}
         package: '*.jar'
