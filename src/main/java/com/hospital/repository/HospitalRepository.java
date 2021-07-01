@@ -1,4 +1,3 @@
-
 package com.hospital.repository;
 
 import java.util.List;

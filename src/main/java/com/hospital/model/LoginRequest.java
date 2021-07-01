@@ -8,7 +8,7 @@ public class LoginRequest implements Serializable {
 	
 	private Header header;
 	private String userName;
-	private String pazzwrd;
+	private String password;
 	
 	public Header getHeader() {
 		return header;
@@ -22,14 +22,14 @@ public class LoginRequest implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPazzwrd() {
-		return pazzwrd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPazzwrd(String pazzwrd) {
-		this.pazzwrd = pazzwrd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "LoginRequest [header=" + header + ", userName=" + userName + ", pazzwrd=" + pazzwrd + "]";
+		return "LoginRequest [header=" + header + ", userName=" + userName + ", password=" + password + "]";
 	}
 }

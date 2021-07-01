@@ -1,4 +1,3 @@
-
 package com.hospital.entity;
 
 import javax.persistence.Column;
@@ -7,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-
 @Table(name = "HOSPITAL")
 public class Hospital {
 

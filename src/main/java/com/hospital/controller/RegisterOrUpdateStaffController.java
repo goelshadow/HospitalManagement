@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hospital.constant.StaffConstants;
 import com.hospital.model.RegisterOrUpdateStaffRequest;
-import com.hospital.model.RegisterOrUpdateStaffResponse;
+import com.hospital.model.RegisterorUpdateStaffResponse;
 import com.hospital.service.RegisterOrUpdateStaffService;
 import com.hospital.util.LoggerUtil;
 import com.hospital.util.StaffUtil;
@@ -20,9 +20,9 @@ public class RegisterOrUpdateStaffController {
 	RegisterOrUpdateStaffService registerOrUpdateStaffService;
 
 	@PostMapping(path = "/registerStaff")
-	public RegisterOrUpdateStaffResponse registerStaff(@RequestBody RegisterOrUpdateStaffRequest request) {
+	public RegisterorUpdateStaffResponse registerStaff(@RequestBody RegisterOrUpdateStaffRequest request) {
 		
-		RegisterOrUpdateStaffResponse response = null;
+		RegisterorUpdateStaffResponse response = null;
 		try {
 			LoggerUtil.printInfoLogs("Request received:", request, false);
 			response = registerOrUpdateStaffService.registerStaff(request);
@@ -35,9 +35,9 @@ public class RegisterOrUpdateStaffController {
 	}
 	
 	@PostMapping(path = "/updateStaff")
-	public RegisterOrUpdateStaffResponse updateStaff(@RequestBody RegisterOrUpdateStaffRequest request) {
+	public RegisterorUpdateStaffResponse updateStaff(@RequestBody RegisterOrUpdateStaffRequest request) {
 		
-		RegisterOrUpdateStaffResponse response = null;
+		RegisterorUpdateStaffResponse response = null;
 		try {
 			LoggerUtil.printInfoLogs("Request received:", request, false);
 			if(!StringUtils.isBlank(request.getStaffUserName())) {

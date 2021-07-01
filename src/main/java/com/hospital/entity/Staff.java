@@ -63,7 +63,10 @@ public class Staff {
 
 	@Column(name = "LAST_UPDATED_BY")
 	private String lastUpdatedBy;
-
+	
+	@Column(name = "PASSWORD")
+	private String password;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -190,6 +193,14 @@ public class Staff {
 
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

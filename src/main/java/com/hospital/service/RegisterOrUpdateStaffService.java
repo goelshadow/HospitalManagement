@@ -9,7 +9,7 @@ import com.hospital.constant.StaffConstants;
 import com.hospital.entity.Staff;
 import com.hospital.helper.StaffHelper;
 import com.hospital.model.RegisterOrUpdateStaffRequest;
-import com.hospital.model.RegisterOrUpdateStaffResponse;
+import com.hospital.model.RegisterorUpdateStaffResponse;
 import com.hospital.repository.StaffRepository;
 import com.hospital.util.CommonUtil;
 import com.hospital.util.LoggerUtil;
@@ -27,7 +27,7 @@ public class RegisterOrUpdateStaffService {
 	@Autowired
 	StaffHelper staffHelper;
 
-	public RegisterOrUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
+	public RegisterorUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
 
 		String generatedUserName = generateStaffId(request);
 		LoggerUtil.printInfoLogs("UserName generated:", generatedUserName, false);
@@ -66,7 +66,7 @@ public class RegisterOrUpdateStaffService {
 		return finalStaffId.toLowerCase();
 	}
 
-	public RegisterOrUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
+	public RegisterorUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
 
 		Optional<Staff> staff1 = staffRepository.findById(request.getStaffUserName());
 		if (staff1.isPresent()) {
