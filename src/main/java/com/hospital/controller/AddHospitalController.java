@@ -1,36 +1,40 @@
 package com.hospital.controller;
 
-import java.util.List;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.hospital.entity.Hospital;
-import com.hospital.repository.HospitalRepository;
+import com.hospital.constant.HospitalConstants;
+import com.hospital.model.RegisterOrUpdateHospitalDetails;
+import com.hospital.model.RegisterOrUpdateHospitalDetailsResponse;
+import com.hospital.service.RegisterHospitalService;
+import com.hospital.util.HospitalUtil;
+import com.hospital.util.LoggerUtil;
 
 @RestController
 public class AddHospitalController {
 
 	@Autowired
-	HospitalRepository hospitalRepository;
+	RegisterHospitalService registerHospitalService;
 
-	@GetMapping("/addHospital")
-	public String registerHospital() {
-		populate();
-		return "";
-
+	@PostMapping("/addHospital")
+	public RegisterOrUpdateHospitalDetailsResponse registerHospital(@RequestBody RegisterOrUpdateHospitalDetails request) {
+		
+		RegisterOrUpdateHospitalDetailsResponse response = null;
+		try {
+			LoggerUtil.printInfoLogs("Add new hospital request received!", request, false);
+			response = registerHospitalService.registerHospital(request);
+		}catch(ConstraintViolationException | DataIntegrityViolationException e) {
+			LoggerUtil.printErrorLogs("ConstraintViolationException Occured:", e);
+//			response = HospitalUtil.buildResponse(request, "", HospitalConstants.CONSTRAINT_VIOLATION_EXCEPTION_CODE, HospitalConstants.CONSTRAINT_VIOLATION_EXCEPTION_DESC);
+		}catch(Exception e) {
+			LoggerUtil.printErrorLogs("Exception occured", e);
+//			response = HospitalUtil.buildResponse(request, "", HospitalConstants.EXCEPTION_CODE, HospitalConstants.EXCEPTION_DESC);
+		}
+		LoggerUtil.printInfoLogs("Add new hospital response sent!", response, false);
+		return response;
 	}
 	
-	public void populate() {
-		Hospital h = new Hospital();
-		h.setAddress("test1");
-		h.setContact("test1");
-		h.setEmail("test@test.com");
-		h.setHospitalId("H0002");
-		h.setName("test1");
-		h.setSpeciality("test1");
-		System.out.println(hospitalRepository.save(h));
-		List<Hospital> a = hospitalRepository.findAll();
-		System.out.println(a.get(0).getHospitalId());
-	}
-
 }

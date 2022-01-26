@@ -31,29 +31,24 @@ public class RegisterOrUpdatePatientService {
 
 	public RegisterOrUpdatePatientResponse registerPatient(RegisterOrUpdatePatientRequest request) {
 
-		String generatedPatientId = generatePatientId();
 		String generatedUserName = generateUserName(request);
 		LoggerUtil.printInfoLogs("UserName generated:", generatedUserName, false);
-		LoggerUtil.printInfoLogs("PatientId generated:", generatedPatientId, false);
 		if (StringUtils.isBlank(generatedUserName)) {
 			return PatientUtil.buildRegisterPatientResponse(request.getHeader(), PatientConstants.FAILURE_CODE,
 					PatientConstants.FAILURE_DESC, "");
 		}
-		;
-		Patient patient = patientHelper.createEntryInPatientTableRequest(request, generatedPatientId,
-				generatedUserName);
+		Patient patient = patientHelper.createEntryInPatientTableRequest(request,generatedUserName);
 		LoggerUtil.printInfoLogs("Request for saving in Patient table:", patient, false);
 		patientRepository.save(patient);
 		return PatientUtil.buildRegisterPatientResponse(request.getHeader(), PatientConstants.SUCCESS_CODE,
 				PatientConstants.SUCCESS_DESC, generatedUserName);
-
 	}
 
 	private String generateUserName(RegisterOrUpdatePatientRequest request) {
 		String userName = "";
 		for (int digit = 3; digit < 7; digit++) {
 			String username = generateUserName(request, digit);
-			Optional<Patient> s = patientRepository.findById(username);
+			Optional<Patient> s = patientRepository.findByUserName(username);
 			if (!s.isPresent()) {
 				userName = username;
 				break;

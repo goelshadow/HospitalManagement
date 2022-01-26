@@ -17,7 +17,7 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@PostMapping(path = "/login")
+	@PostMapping(path = "/employeelogin")
 	public LoginResponse login(@RequestBody LoginRequest request) {
 		
 		LoginResponse response = null;

@@ -2,14 +2,14 @@ package com.hospital.model;
 
 public class Header {
 
-	private String hospitalId;
+	private int hospitalId;
 	private String transId;
 	private String channelId;
 	
-	public String getHospitalId() {
+	public int getHospitalId() {
 		return hospitalId;
 	}
-	public void setHospitalId(String hospitalId) {
+	public void setHospitalId(int hospitalId) {
 		this.hospitalId = hospitalId;
 	}
 	public String getTransId() {

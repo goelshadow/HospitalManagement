@@ -14,7 +14,7 @@ public class PatientHelper {
 	@Autowired
 	CommonUtil commonUtil;
 	
-	public Patient createEntryInPatientTableRequest(RegisterOrUpdatePatientRequest request,String patientId,String userName) {
+	public Patient createEntryInPatientTableRequest(RegisterOrUpdatePatientRequest request,String userName) {
 		
 		Patient patient = new Patient();
 		patient.setAddress(request.getAddress());
@@ -24,12 +24,10 @@ public class PatientHelper {
 		patient.setEmail(request.getEmail());
 		patient.setFirstName(request.getFirstName());
 		patient.setGender(request.getGender());
-		patient.setHospitalId(request.getHeader().getHospitalId());
 		patient.setLastName(request.getLastName());
 		patient.setLastUpdatedBy(PatientConstants.REGISTER_PATIENT_SERVICE_NAME);
 		patient.setLastUpdatedOn(commonUtil.getTodaysDate());
 		patient.setMiddleName(request.getMiddleName());
-		patient.setPatientId(patientId);
 		patient.setPhone(request.getPhone());
 		patient.setProblem(request.getProblem());
 		patient.setUserName(userName);
@@ -45,7 +43,6 @@ public class PatientHelper {
 		patient.setEmail(request.getEmail());
 		patient.setFirstName(request.getFirstName());
 		patient.setGender(request.getGender());
-		patient.setHospitalId(request.getHeader().getHospitalId());
 		patient.setLastName(request.getLastName());
 		patient.setLastUpdatedBy(PatientConstants.UPDATE_PATIENT_SERVICE_NAME);
 		patient.setLastUpdatedOn(commonUtil.getTodaysDate());

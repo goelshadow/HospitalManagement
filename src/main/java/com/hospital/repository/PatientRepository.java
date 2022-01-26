@@ -9,6 +9,6 @@ import com.hospital.entity.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
-	public Optional<Patient> findById(@Param("patientId") String patientId);
+	public Optional<Patient> findByUserName(@Param("patientId") String patientId);
 
 }

@@ -1,27 +1,36 @@
 
 package com.hospital.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "STAFF")
-public class Staff {
+@Table(name = "EMPLOYEE")
+public class Staff implements Serializable {
 
 	@Id
-	@Column(name = "USERNAME")
-	private String userName;
+	@Column(name = "EMPLOYEE_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int employeeId;
 	
-	@Column(name = "STAFF_ID")
-	private String staffId;
-
 	@Column(name = "HOSPITAL_ID")
-	private String hospitalId;
+	private int hospitalId;
+	
+	@Column(name = "PASSWORD")
+	private String password;
+
+	@Column(name = "STATUS")
+	private String status;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -32,8 +41,8 @@ public class Staff {
 	@Column(name = "LAST_NAME")
 	private String lastName;
 
-	@Column(name = "AGE")
-	private int age;
+	@Column(name = "DOB")
+	private Date dob;
 
 	@Column(name = "GENDER")
 	private String gender;
@@ -63,32 +72,37 @@ public class Staff {
 
 	@Column(name = "LAST_UPDATED_BY")
 	private String lastUpdatedBy;
-	
-	@Column(name = "PASSWORD")
-	private String password;
-	
-	public String getUserName() {
-		return userName;
+
+	public int getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
-	public String getStaffId() {
-		return staffId;
-	}
-
-	public void setStaffId(String staffId) {
-		this.staffId = staffId;
-	}
-
-	public String getHospitalId() {
+	public int getHospitalId() {
 		return hospitalId;
 	}
 
-	public void setHospitalId(String hospitalId) {
+	public void setHospitalId(int hospitalId) {
 		this.hospitalId = hospitalId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getFirstName() {
@@ -115,12 +129,12 @@ public class Staff {
 		this.lastName = lastName;
 	}
 
-	public int getAge() {
-		return age;
+	public Date getDob() {
+		return dob;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public String getGender() {
@@ -194,13 +208,4 @@ public class Staff {
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 }

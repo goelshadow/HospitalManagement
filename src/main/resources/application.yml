@@ -1,13 +1,17 @@
 spring:
  datasource:
 #  hikari:
-   url: jdbc:sqlserver://hospitaldatabase-server.database.windows.net:1433;database=hospitalmanagement;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-   username: goelshubham
-   password: Shubham@1234
-   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
-#spring.jpa.show-sql: false
-#spring.jpa.hibernate.ddl-auto: create-drop
+   url: jdbc:mysql://34.131.133.36:3306/hospital_management?useUnicode=true&characterEncoding=utf8
+   username: root
+   password: 1234
+   driver-class-name: com.mysql.jdbc.Driver
+spring.jpa.database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.show-sql: true
+spring.jpa.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+spring.jpa.hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#spring.jpa.generate-ddl: false
+#spring.jpa.hibernate.ddl-auto: none
+lower_case_table_names: 0
 spring.datasource.testWhileIdle: true
 spring.datasource.test-on-borrow: true
 #   driver-class-name: oracle.jdbc.OracleDriver
@@ -23,3 +27,5 @@ logging.level.org.springframework.web: DEBUG
 logging.level.org.hibernate: DEBUG
 logging.level.com.zaxxer.hikari.HikariConfig: DEBUG
 logging.level.org.hibernate.SQL: DEBUG
+#server:
+#  port: 8081

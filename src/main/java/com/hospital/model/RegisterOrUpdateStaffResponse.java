@@ -1,10 +1,11 @@
 package com.hospital.model;
 
-public class FillDoctorTimeSlotResponse {
+public class RegisterOrUpdateStaffResponse {
 	
 	private String responseCode;
 	private String responseDesc;
 	private Header header;
+	private String generatedEmployeeId;
 	
 	public String getResponseCode() {
 		return responseCode;
@@ -24,10 +25,15 @@ public class FillDoctorTimeSlotResponse {
 	public void setHeader(Header header) {
 		this.header = header;
 	}
+	public String getGeneratedEmployeeId() {
+		return generatedEmployeeId;
+	}
+	public void setGeneratedEmployeeId(String generatedEmployeeId) {
+		this.generatedEmployeeId = generatedEmployeeId;
+	}
 	@Override
 	public String toString() {
-		return "FillDoctorTimeSlotResponse [responseCode=" + responseCode + ", responseDesc=" + responseDesc
-				+ ", header=" + header + "]";
+		return "RegisterOrUpdateStaffResponse [responseCode=" + responseCode + ", responseDesc=" + responseDesc
+				+ ", header=" + header + ", generatedEmployeeId=" + generatedEmployeeId + "]";
 	}
-
 }

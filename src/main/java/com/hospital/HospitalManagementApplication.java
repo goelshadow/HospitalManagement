@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages={"com.hospital"})
+@ComponentScan(basePackages={"com.hospital.*"})
 @EnableAutoConfiguration
 public class HospitalManagementApplication {
 

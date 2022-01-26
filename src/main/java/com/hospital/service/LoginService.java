@@ -1,12 +1,11 @@
 package com.hospital.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.google.gson.Gson;
 import com.hospital.constant.LoginConstants;
 import com.hospital.entity.Staff;
-import com.hospital.entity.StaffLogin;
 import com.hospital.model.LoginRequest;
 import com.hospital.model.LoginResponse;
 import com.hospital.repository.LoginRepository;
@@ -24,9 +23,9 @@ public class LoginService {
 
 	public LoginResponse doLogin(LoginRequest loginRequest) {
 
-		Staff staffResponse = loginRepository.findByStaffId(loginRequest.getUserName(), loginRequest.getPassword());
-		LoggerUtil.printInfoLogs("Response from USER_LOGIN table:", gson.toJson(staffResponse), true);
-		if (null != staffResponse) {
+		Staff staffResponse = loginRepository.findByPhone(loginRequest.getPhone());
+		LoggerUtil.printInfoLogs("Response from EMPLOYEE table:", gson.toJson(staffResponse), true);
+		if (null != staffResponse && loginRequest.getPassword().equals(staffResponse.getPassword())) {
 			return LoginUtil.buildResponse(loginRequest.getHeader(), LoginConstants.SUCCESS_CODE,
 					LoginConstants.SUCCESS_DESC);
 		} else {

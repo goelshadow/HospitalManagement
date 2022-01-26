@@ -1,80 +1,61 @@
-
 package com.hospital.service;
 
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import com.hospital.constant.StaffConstants;
 import com.hospital.entity.Staff;
 import com.hospital.helper.StaffHelper;
 import com.hospital.model.RegisterOrUpdateStaffRequest;
-import com.hospital.model.RegisterorUpdateStaffResponse;
+import com.hospital.model.RegisterOrUpdateStaffResponse;
 import com.hospital.repository.StaffRepository;
 import com.hospital.util.CommonUtil;
 import com.hospital.util.LoggerUtil;
 import com.hospital.util.StaffUtil;
 
-@Component
+@Service
 public class RegisterOrUpdateStaffService {
-
+	
 	@Autowired
 	StaffRepository staffRepository;
-
+	
 	@Autowired
 	CommonUtil commonUtil;
-
+	
 	@Autowired
 	StaffHelper staffHelper;
+	
+	public RegisterOrUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
 
-	public RegisterorUpdateStaffResponse registerStaff(RegisterOrUpdateStaffRequest request) {
-
-		String generatedUserName = generateStaffId(request);
-		LoggerUtil.printInfoLogs("UserName generated:", generatedUserName, false);
-		if (StringUtils.isBlank(generatedUserName)) {
-			return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.FAILURE_CODE,StaffConstants.FAILURE_DESC, "");
-		}
-		Staff staff = staffHelper.createEntryInStaffTableRequest(request, generatedUserName);
+		Staff staff = staffHelper.createEntryInStaffTableRequest(request);
 		LoggerUtil.printInfoLogs("Request for saving in staff table:", staff, false);
 		staffRepository.save(staff);
-		return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,StaffConstants.SUCCESS_DESC, generatedUserName);
+		return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,StaffConstants.SUCCESS_DESC, String.valueOf(staff.getEmployeeId()));
 	}
 
-	private String generateStaffId(RegisterOrUpdateStaffRequest request) {
+	public RegisterOrUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
 
-		String userName = "";
-		for (int digit = 3; digit < 7; digit++) {
-			String username = generateUserName(request, digit);
-			Optional<Staff> s = staffRepository.findById(username);
-			if (!s.isPresent()) {
-				userName = username;
-				break;
-			}
-		}
-		return userName;
-	}
-
-	private String generateUserName(RegisterOrUpdateStaffRequest request, int randomDigit) {
-
-		String subLastName = request.getLastName().trim();
-		String subFirstName = request.getFirstName().trim();
-		if (subLastName.length() > 2)
-			subLastName = subLastName.substring(0, 2);
-		if (subFirstName.length() > 4)
-			subFirstName = subFirstName.substring(0, 4);
-		String finalStaffId = subLastName + subFirstName + commonUtil.generateRandomDigit(randomDigit);
-		return finalStaffId.toLowerCase();
-	}
-
-	public RegisterorUpdateStaffResponse updateStaff(RegisterOrUpdateStaffRequest request) {
-
-		Optional<Staff> staff1 = staffRepository.findById(request.getStaffUserName());
-		if (staff1.isPresent()) {
-			Staff staff = staffHelper.updateEntryInStaffTableRequest(request, staff1.get());
+		Optional<Staff> existingStaff = staffRepository.findByPhone(request.getPhone());
+		Staff staff = null;
+		if (existingStaff.isPresent()) {
+			staff = staffHelper.updateEntryInStaffTableRequestByEmployee(request, existingStaff.get());
 			staffRepository.save(staff);
 		}
-		return StaffUtil.buildRegisterStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,
-				StaffConstants.SUCCESS_DESC, request.getStaffUserName());
+		return StaffUtil.buildUpdateStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,
+				StaffConstants.SUCCESS_DESC,String.valueOf(staff.getEmployeeId()));
+	}
+	
+	public RegisterOrUpdateStaffResponse updateStaffByAdmin(RegisterOrUpdateStaffRequest request) {
+
+		Optional<Staff> existingStaff = staffRepository.findByPhone(request.getPhone());
+		Staff staff = null;
+		if (existingStaff.isPresent()) {
+			staff = staffHelper.approveOrRejectEmployeeByAdmin(request, existingStaff.get());
+			staffRepository.save(staff);
+		}
+		return StaffUtil.buildUpdateStaffResponse(request.getHeader(), StaffConstants.SUCCESS_CODE,
+				StaffConstants.SUCCESS_DESC,String.valueOf(staff.getEmployeeId()));
 	}
 
 }

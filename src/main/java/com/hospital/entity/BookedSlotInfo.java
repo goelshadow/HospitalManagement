@@ -1,37 +1,41 @@
 package com.hospital.entity;
 
+import java.sql.Blob;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "HOSPITAL")
-public class Hospital {
+@Table(name = "BOOKED_SLOT_INFO")
+public class BookedSlotInfo {
 
 	@Id
+	@Column(name = "SLOT_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int slotId;
+	
 	@Column(name = "HOSPITAL_ID")
 	private String hospitalId;
 
-	@Column(name = "NAME")
-	private String hospitalName;
+	@Column(name = "DOCTOR_USERNAME")
+	private String doctorUserName;
 
-	@Column(name = "SPECIALITY")
-	private String speciality;
-
-	@Column(name = "CONTACT")
-	private String phoneNumber;
-
-	@Column(name = "EMAIL")
-	private String email;
-
-	@Column(name = "ADDRESS")
-	private String address;
-
+	@Column(name = "SLOT_DATE")
+	private Date slotDate;
+	
+	@Lob
+	@Column(name = "TIME_AND_PATIENT")
+	private byte[] timeAndPatient;
+	
 	@Column(name = "CREATED_ON")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createdOn;
@@ -45,7 +49,15 @@ public class Hospital {
 
 	@Column(name = "LAST_UPDATED_BY")
 	private String lastUpdatedBy;
-	
+
+	public int getSlotId() {
+		return slotId;
+	}
+
+	public void setSlotId(int slotId) {
+		this.slotId = slotId;
+	}
+
 	public String getHospitalId() {
 		return hospitalId;
 	}
@@ -54,44 +66,28 @@ public class Hospital {
 		this.hospitalId = hospitalId;
 	}
 
-	public String getHospitalName() {
-		return hospitalName;
+	public String getDoctorUserName() {
+		return doctorUserName;
 	}
 
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
+	public void setDoctorUserName(String doctorUserName) {
+		this.doctorUserName = doctorUserName;
 	}
 
-	public String getSpeciality() {
-		return speciality;
+	public Date getSlotDate() {
+		return slotDate;
 	}
 
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
+	public void setSlotDate(Date slotDate) {
+		this.slotDate = slotDate;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public byte[] getTimeAndPatient() {
+		return timeAndPatient;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setTimeAndPatient(byte[] timeAndPatient) {
+		this.timeAndPatient = timeAndPatient;
 	}
 
 	public Calendar getCreatedOn() {
@@ -125,5 +121,5 @@ public class Hospital {
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
-
+	
 }

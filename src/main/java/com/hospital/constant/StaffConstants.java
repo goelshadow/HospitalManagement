@@ -10,5 +10,7 @@ public class StaffConstants {
 	public static final String FAILURE_DESC = "Unable to generate Staff USER_NAME";
 	public static final String EXCEPTION_CODE = "11111";
 	public static final String EXCEPTION_DESC = "Exception Occured";
-	public static final String USER_NAME_EMPTY = "UserName can not be empty in request";
+	public static final String CONSTRAINT_VIOLATION_EXCEPTION_CODE = "10100";
+	public static final String CONSTRAINT_VIOLATION_EXCEPTION_DESC = "PhoneNumber already registered";
+	public static final String USER_NAME_EMPTY = "PhoneNumber can not be empty in request";
 }

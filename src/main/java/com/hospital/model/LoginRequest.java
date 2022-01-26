@@ -7,7 +7,7 @@ public class LoginRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Header header;
-	private String userName;
+	private String phone;
 	private String password;
 	
 	public Header getHeader() {
@@ -16,11 +16,11 @@ public class LoginRequest implements Serializable {
 	public void setHeader(Header header) {
 		this.header = header;
 	}
-	public String getUserName() {
-		return userName;
+	public String getPhone() {
+		return phone;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getPassword() {
 		return password;
@@ -30,6 +30,6 @@ public class LoginRequest implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "LoginRequest [header=" + header + ", userName=" + userName + ", password=" + password + "]";
+		return "LoginRequest [header=" + header + ", phone=" + phone + ", password=" + password + "]";
 	}
 }

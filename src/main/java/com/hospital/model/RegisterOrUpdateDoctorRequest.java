@@ -1,24 +1,23 @@
 package com.hospital.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class RegisterOrUpdateStaffRequest implements Serializable {
+public class RegisterOrUpdateDoctorRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Header header;
+	private String password;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private Date dob;
-	private String activeStatus;
+	private int age;
 	private String gender;
 	private String phone;
 	private String email;
 	private String profession;
 	private String address;
-	private String adminId;
+	private String staffUserName;
 	
 	public Header getHeader() {
 		return header;
@@ -44,11 +43,11 @@ public class RegisterOrUpdateStaffRequest implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getDob() {
-		return dob;
+	public int getAge() {
+		return age;
 	}
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public String getGender() {
 		return gender;
@@ -80,23 +79,23 @@ public class RegisterOrUpdateStaffRequest implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getActiveStatus() {
-		return activeStatus;
+	public String getStaffUserName() {
+		return staffUserName;
 	}
-	public void setActiveStatus(String activeStatus) {
-		this.activeStatus = activeStatus;
+	public void setStaffUserName(String staffUserName) {
+		this.staffUserName = staffUserName;
 	}
-	public String getAdminId() {
-		return adminId;
+	public String getPassword() {
+		return password;
 	}
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "RegisterOrUpdateStaffRequest [header=" + header + ", firstName=" + firstName + ", middleName="
-				+ middleName + ", lastName=" + lastName + ", dob=" + dob + ", activeStatus=" + activeStatus
+		return "RegisterOrUpdateDoctorRequest [header=" + header + ", password=" + password
+				+ ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", age=" + age
 				+ ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", profession=" + profession
-				+ ", address=" + address + ", adminId=" + adminId + "]";
+				+ ", address=" + address + ", staffUserName=" + staffUserName + "]";
 	}
 }

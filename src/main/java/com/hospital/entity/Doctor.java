@@ -1,3 +1,4 @@
+
 package com.hospital.entity;
 
 import java.util.Calendar;
@@ -11,16 +12,19 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "PATIENT")
-public class Patient {
+@Table(name = "DOCTOR")
+public class Doctor {
 
+	@Id
+	@Column(name = "STAFF_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int staffId;
+	
+	@Column(name = "HOSPITAL_ID")
+	private String hospitalId;
+	
 	@Column(name = "USERNAME")
 	private String userName;
-	
-	@Id
-	@Column(name = "PATIENT_ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int patientId;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -43,8 +47,8 @@ public class Patient {
 	@Column(name = "EMAIL")
 	private String email;
 
-	@Column(name = "PROBLEM")
-	private String problem;
+	@Column(name = "SPECIALITY")
+	private String speciality;
 
 	@Column(name = "ADDRESS")
 	private String address;
@@ -62,7 +66,10 @@ public class Patient {
 
 	@Column(name = "LAST_UPDATED_BY")
 	private String lastUpdatedBy;
-
+	
+	@Column(name = "PASSWORD")
+	private String password;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -71,12 +78,20 @@ public class Patient {
 		this.userName = userName;
 	}
 
-	public int getPatientId() {
-		return patientId;
+	public int getStaffId() {
+		return staffId;
 	}
 
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
+	public void setStaffId(int staffId) {
+		this.staffId = staffId;
+	}
+
+	public String getHospitalId() {
+		return hospitalId;
+	}
+
+	public void setHospitalId(String hospitalId) {
+		this.hospitalId = hospitalId;
 	}
 
 	public String getFirstName() {
@@ -135,12 +150,12 @@ public class Patient {
 		this.email = email;
 	}
 
-	public String getProblem() {
-		return problem;
+	public String getSpeciality() {
+		return speciality;
 	}
 
-	public void setProblem(String problem) {
-		this.problem = problem;
+	public void setSpeciality(String speciality) {
+		this.speciality = speciality;
 	}
 
 	public String getAddress() {
@@ -182,5 +197,13 @@ public class Patient {
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }
